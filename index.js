@@ -15,7 +15,7 @@ app.post("/api/query", (req, res) => {
     const response = { code: code[algorithm][language], language: language };
     res.status(200).send(response);
   } catch (err) {
-    res.status(404).send("Query Not found");
+    res.status(404).send({ res: "Query Not found" });
   }
 });
 
