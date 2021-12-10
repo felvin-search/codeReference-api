@@ -1,0 +1,11 @@
+{
+  "name": "reference-code-service",
+  "version": "1.0.0",
+  "description": "API service for serving code snippets",
+  "main": "index.js",
+  "author": "rajivharlalka <rajivharlalka009@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
