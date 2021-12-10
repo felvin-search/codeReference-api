@@ -9,9 +9,14 @@ app.use(cors());
 app.options("*", cors());
 app.use(morgan("tiny"));
 
-app.get("/api/query", (req, res) => {
-  const [algorithm, language] = req.body.query;
-  res.send(code[algorithm][language]);//
+app.post("/api/query", (req, res) => {
+  const [algorithm, language] = req.body.query.split(" in ");
+  try {
+    const response = { code: code[algorithm][language], language: language };
+    res.status(200).send(response);
+  } catch (err) {
+    res.status(404).send("Query Not found");
+  }
 });
 
 PORT = process.env.port || process.env.PORT || 5000;
