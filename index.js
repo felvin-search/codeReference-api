@@ -9,8 +9,9 @@ app.use(cors());
 app.options("*", cors());
 app.use(morgan("tiny"));
 
-app.post("/api/query", (req, res) => {
-  const [algorithm, language] = req.body.query.split(" in ");
+app.get("/api/code", (req, res) => {
+  const query = req.query.searchQuery;
+  const [algorithm, language] = query.split(" in ");
   try {
     const response = { code: code[algorithm][language], language: language };
     res.status(200).send(response);
