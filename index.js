@@ -1,7 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
-const code = require("./code.json");
+const code = require("./rosetta-code-snippets.json");
 
 const app = express();
 app.use(express.json());
