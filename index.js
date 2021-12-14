@@ -24,6 +24,7 @@ app.get("/api/code", (req, res) => {
         code: rosetta_code[algorithm][language],
         language,
         source: "http://www.rosettacode.org/wiki/Rosetta_Code",
+        name: "Rosetta code",
       };
     } else {
       //If not , use theTheAlgorithms json file
@@ -32,6 +33,7 @@ app.get("/api/code", (req, res) => {
         code: algorithms_code[language][algorithm],
         language,
         source: "https://the-algorithms.com",
+        name: "The Algorithm",
       };
     }
     res.status(200).send(response);
