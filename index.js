@@ -13,19 +13,27 @@ app.use(morgan("tiny"));
 app.get("/api/code", (req, res) => {
   const query = req.query.searchQuery;
   const [algorithm, language] = query.split(" in ");
-  let code_snippet;
+  let response;
   try {
-    //check first if code snippets for the language and algorithm are available in the TheAlgorithms json file
+    //check first if code snippets for the language and algorithm are available in the rosetta code file
     if (
       algorithms_code[language] === undefined ||
       algorithms_code[language][algorithm] === undefined
     ) {
-      code_snippet = rosetta_code[algorithm][language];
+      response = {
+        code: rosetta_code[algorithm][language],
+        language,
+        source: "http://www.rosettacode.org/wiki/Rosetta_Code",
+      };
     } else {
-      //If not , use the rosetta code file
-      code_snippet = algorithms_code[language][algorithm];
+      //If not , use theTheAlgorithms json file
+
+      response = {
+        code: algorithms_code[language][algorithm],
+        language,
+        source: "https://the-algorithms.com",
+      };
     }
-    const response = { code: code_snippet, language: language };
     res.status(200).send(response);
   } catch (err) {
     res.status(404).send({ res: "Query Not found" });
