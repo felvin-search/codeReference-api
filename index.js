@@ -11,7 +11,6 @@ app.options("*", cors());
 app.use(morgan("tiny"));
 
 app.get("/api/code", (req, res) => {
-  console.log(req.query);
   const query = req.query.searchQuery;
   const [algorithm, language] = query.split(" in ");
   let code_snippet;
@@ -22,7 +21,6 @@ app.get("/api/code", (req, res) => {
       algorithms_code[language][algorithm] === undefined
     ) {
       code_snippet = rosetta_code[algorithm][language];
-      console.log(code_snippet);
     } else {
       //If not , use the rosetta code file
       code_snippet = algorithms_code[language][algorithm];
