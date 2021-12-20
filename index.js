@@ -21,6 +21,7 @@ app.get("/api/code", (req, res) => {
       algorithms_code[language][algorithm] === undefined
     ) {
       response = {
+        algorithm,
         code: rosetta_code[algorithm][language],
         language,
         source: "http://www.rosettacode.org/wiki/Rosetta_Code",
@@ -30,6 +31,7 @@ app.get("/api/code", (req, res) => {
       //If not , use theTheAlgorithms json file
 
       response = {
+        algorithm,
         code: algorithms_code[language][algorithm],
         language,
         source: "https://the-algorithms.com",
