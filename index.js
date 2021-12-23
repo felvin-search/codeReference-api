@@ -12,8 +12,11 @@ app.use(morgan("tiny"));
 
 app.get("/api/code", (req, res) => {
   const query = req.query.searchQuery;
-  const [algorithm, language] = query.split(" in ");
+  let [algorithm, language] = query.split(" in ");
   let response;
+  if (!language) {
+    language = "javascript";
+  }
   try {
     //check first if code snippets for the language and algorithm are available in the rosetta code file
     if (
