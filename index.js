@@ -18,6 +18,23 @@ let db = new sqlite3.Database("./snippets.db", err => {
     console.log("Connected to the snippets database.");
 });
 
+// db.run("CREATE TABLE IF NOT EXISTS snippets (algorithm varchar(255),language varchar(255),snippet varchar)");
+
+// function fill_db() {
+//     for (key of Object.keys(algorithms_code)) {
+//         for (key2 of Object.keys(algorithms_code[key])) {
+//             console.log(key, key2);
+//             db.run("INSERT INTO snippets(algorithm,language,snippet) values(?,?,?)", [
+//                 key2,
+//                 key,
+//                 algorithms_code[key][key2],
+//             ]);
+//         }
+//     }
+// }
+
+// fill_db();
+
 app.get("/api/code", (req, res) => {
     const query = req.query.searchQuery;
     let [algorithm, language] = query.split(" in ");
