@@ -124,7 +124,7 @@ app.get("/api/sql", (req, res) => {
                     languages.push(e.language);
                 });
                 res.send({
-                    snippet: rows[0].snippet,
+                    code: rows[0].snippet,
                     source: rows[0].source,
                     name: rows[0].name,
                     algorithm,
